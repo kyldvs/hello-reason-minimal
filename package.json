@@ -1,0 +1,19 @@
+{
+  "name": "hello-reason-minimal",
+  "version": "1.0.0",
+  "description": "hello-reason-minimal",
+  "license": "MIT",
+  "esy": {
+    "build": "refmterr dune build -p hello"
+  },
+  "dependencies": {
+    "@esy-ocaml/reason": "*",
+    "@opam/dune": "*",
+    "ocaml": "~4.9.0"
+  },
+  "devDependencies": {
+    "@opam/merlin": "*",
+    "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam",
+    "refmterr": "*"
+  }
+}
