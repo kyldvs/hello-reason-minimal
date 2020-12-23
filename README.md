@@ -70,7 +70,7 @@ esy vim
 
 ## More Details
 
-- For some more details and additional setup see: [`details.md`](details.md)
+- For more details and additional setup see: [`details.md`](details.md)
   - Adding dependencies
   - Recursive dub-directories
   - Ignoring warnings
