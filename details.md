@@ -6,16 +6,14 @@
 
 ```json
 {
-  ...
   "dependencies": {
-    ...
     "@reason-native/console": "^0.1.0"
   }
 }
 ```
 
-- Add a `libraries` section to the `dune` file where this depency should be available:
-  - The name to use in `libraries` is the `public_name` located in that library's `dune` file: [`console.lib`](https://github.com/facebookexperimental/reason-native/blob/master/src/console/dune#L3)
+- Add a `libraries` section to the `dune` file
+- The name comes from the `public_name` located in that library's `dune` file: [`console.lib`](https://github.com/facebookexperimental/reason-native/blob/master/src/console/dune#L3)
 
 ```
 (executable
@@ -28,7 +26,7 @@
 )
 ```
 
-- Now `Console` is available in your source code:
+- Now the `Console` module is available in your source code:
 
 ```reason
 Console.log("Hello again!");
@@ -41,9 +39,7 @@ Console.log("Hello again!");
 
 ```json
 {
-  ...
   "dependencies": {
-    ...
     "@reason-native/console": "*"
   },
   "resolutions": {
@@ -54,7 +50,7 @@ Console.log("Hello again!");
 
 ## Recursive Sub Directories
 
-To allow source code to be in sub-directories recursively add to the end of the `dune` file:
+To use source code in sub-directories recursively add to the end of the `dune` file:
 
 ```
 (include_subdirs unqualified)
@@ -73,27 +69,27 @@ Overall the file might look like:
 
 ## Hide Warnings
 
-- TODO: Explanation.
+- Some warnings are more noisy than helpful. Add `ocamlopt_flags` and `ocamlc_flags` to ignore specific warnings (9 and 27 in this example):
 
 ```
+(executable
+  (name Hello)
+  (public_name hello)
+  (package hello)
   (ocamlopt_flags -w -9-27)
   (ocamlc_flags -w -9-27)
+)
 ```
 
 ## Printing Stack traces
 
-- TODO: Explanation.
-
-```
-  (ocamlopt_flags -g)
-  (ocamlc_flags -g)
-```
+- By default when an uncaught exception is raised the program prints the error message and no stack trace.
+- To print the stack trace by default ensure that the environment variable `OCAMLRUNPARAM=b` is set.
+- One way to set this variable using `esy` is in the `package.json`:
 
 ```json
 {
-  ...
   "esy": {
-    ...
     "exportedEnv": {
       "OCAMLRUNPARAM": {
         "val": "b",
@@ -103,3 +99,5 @@ Overall the file might look like:
   }
 }
 ```
+
+- Test this works by adding `1 / 0;` to `Hello.re` and ensuring the stack trace is printed.

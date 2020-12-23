@@ -1,4 +1,4 @@
-# hello-reason-minimal
+# `hello-reason-minimal`
 
 Minimal setup for running Reason code.
 
@@ -36,7 +36,9 @@ esy x hello
 
 _This will automatically rebuild if there are changes_
 
-## VSCode Support
+## Editor Support
+
+### VSCode
 
 - Install the [OCaml Platform](https://marketplace.visualstudio.com/items?itemName=ocamllabs.ocaml-platform) extension.
 - Create `.vscode/settings.json` in this repo:
@@ -50,8 +52,31 @@ _This will automatically rebuild if there are changes_
 }
 ```
 
-- Relaunch VSCode
+- Restart VSCode
+
+### VIM
+
+- For VIM support use: [`vim-reasonml`](https://github.com/jordwalke/vim-reasonml)
+- (Or see the next section for general terminal editor use)
+
+### Terminal Editors
+
+- Run your editor within the Reason environment using `esy`:
+
+```bash
+esy $EDITOR
+esy vim
+```
 
 ## More Details
 
 - For some more details and additional setup see: [`details.md`](details.md)
+  - Adding dependencies
+  - Recursive dub-directories
+  - Ignoring warnings
+  - Printing stack traces
+
+## Next Steps
+
+When you understand how this repo works, a more complete setup, including CI/CD, can
+be found at [`esy-ocaml/hello-reason`](https://github.com/esy-ocaml/hello-reason).
